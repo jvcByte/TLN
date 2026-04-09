@@ -1,0 +1,147 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+.w{padding:1.5rem 0;}
+.section-label{font-size:11px;font-weight:500;color:var(--color-text-tertiary);letter-spacing:.07em;text-transform:uppercase;margin:2rem 0 .75rem;}
+.bundles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:2rem;}
+.bcard{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem;}
+.bcard.hot{border:2px solid var(--color-border-info);}
+.badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:var(--border-radius-md);margin-bottom:12px;}
+.badge.b{background:#E1F5EE;color:#085041;}
+.badge.h{background:var(--color-background-info);color:var(--color-text-info);}
+.badge.p{background:#EEEDFE;color:#3C3489;}
+.bname{font-size:16px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px;}
+.bsub{font-size:12px;color:var(--color-text-secondary);margin-bottom:14px;line-height:1.5;}
+.price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:4px;}
+.price{font-size:24px;font-weight:500;color:var(--color-text-primary);}
+.was{font-size:13px;color:var(--color-text-tertiary);text-decoration:line-through;}
+.save-pill{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px;background:var(--color-background-success);color:var(--color-text-success);margin-bottom:14px;}
+.divider{border:none;border-top:0.5px solid var(--color-border-tertiary);margin:12px 0;}
+.feat{font-size:12px;color:var(--color-text-secondary);padding:4px 0;display:flex;gap:7px;line-height:1.5;}
+.dot{width:5px;height:5px;border-radius:50%;margin-top:6px;flex-shrink:0;}
+.db{background:#1D9E75;}.dh{background:#378ADD;}.dp{background:#7F77DD;}
+.tracks-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+.tpill{font-size:11px;padding:3px 9px;border-radius:20px;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:2rem;}
+.mc{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.75rem 1rem;}
+.mc .lbl{font-size:11px;color:var(--color-text-tertiary);margin-bottom:4px;}
+.mc .val{font-size:15px;font-weight:500;color:var(--color-text-primary);}
+.timeline{border-left:2px solid var(--color-border-secondary);padding-left:1.25rem;margin-bottom:2rem;}
+.tl-item{margin-bottom:1.25rem;position:relative;}
+.tl-dot{width:9px;height:9px;border-radius:50%;background:#378ADD;position:absolute;left:-1.62rem;top:4px;}
+.tl-dot.g{background:#1D9E75;}.tl-dot.p{background:#7F77DD;}.tl-dot.x{background:#888780;}
+.tl-title{font-size:13px;font-weight:500;color:var(--color-text-primary);}
+.tl-sub{font-size:12px;color:var(--color-text-secondary);line-height:1.5;}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:1.5rem;}
+.cta button{padding:9px 18px;font-size:13px;border-radius:var(--border-radius-md);cursor:pointer;border:0.5px solid var(--color-border-secondary);background:transparent;color:var(--color-text-primary);}
+</style>
+
+<div class="w">
+  <h2 style="font-size:22px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px;">Bundle deals — all three tracks</h2>
+  <p style="font-size:14px;color:var(--color-text-secondary);margin-bottom:1.5rem;">Students save more by committing to the full journey. You earn more upfront per student.</p>
+
+  <div class="bundles">
+
+    <div class="bcard">
+      <div class="badge b">Starter bundle</div>
+      <div class="bname">Tech Jumpstart</div>
+      <div class="bsub">All three Starter-tier packages. Best for total beginners testing the waters.</div>
+      <div class="tracks-row">
+        <span class="tpill">AI Foundations</span>
+        <span class="tpill">Automation Essentials</span>
+        <span class="tpill">Dev Foundations</span>
+      </div>
+      <div class="price-row">
+        <span class="price">₦210,000</span>
+        <span class="was">₦240,000</span>
+      </div>
+      <div class="save-pill">Save ₦30,000 (12.5%)</div>
+      <hr class="divider">
+      <div class="feat"><span class="dot db"></span>12 weeks total (run concurrently or sequentially)</div>
+      <div class="feat"><span class="dot db"></span>Group support across all 3 tracks</div>
+      <div class="feat"><span class="dot db"></span>3 beginner projects (one per track)</div>
+      <div class="feat"><span class="dot db"></span>Completion certificates for all tracks</div>
+      <div class="feat"><span class="dot db"></span>Access to alumni community</div>
+    </div>
+
+    <div class="bcard hot">
+      <div class="badge h">Best value</div>
+      <div class="bname">Tech Professional</div>
+      <div class="bsub">All three Pro-tier packages. The most popular bundle — serious learners ready to work.</div>
+      <div class="tracks-row">
+        <span class="tpill">AI Builder</span>
+        <span class="tpill">Automation Pro</span>
+        <span class="tpill">Full-Stack + Web3</span>
+      </div>
+      <div class="price-row">
+        <span class="price">₦480,000</span>
+        <span class="was">₦555,000</span>
+      </div>
+      <div class="save-pill">Save ₦75,000 (13.5%)</div>
+      <hr class="divider">
+      <div class="feat"><span class="dot dh"></span>24 weeks total structured curriculum</div>
+      <div class="feat"><span class="dot dh"></span>9 real-world portfolio projects</div>
+      <div class="feat"><span class="dot dh"></span>6 x 1-on-1 mentoring sessions (2 per track)</div>
+      <div class="feat"><span class="dot dh"></span>Certificates of completion — all 3 tracks</div>
+      <div class="feat"><span class="dot dh"></span>Priority community access + peer accountability group</div>
+      <div class="feat"><span class="dot dh"></span>Monthly live Q&A with instructor</div>
+    </div>
+
+    <div class="bcard">
+      <div class="badge p">Elite bundle</div>
+      <div class="bname">Tech Mastery Programme</div>
+      <div class="bsub">All three Premium-tier packages. For those who want to go all-in and build a career or agency.</div>
+      <div class="tracks-row">
+        <span class="tpill">AI Professional</span>
+        <span class="tpill">Automation Agency</span>
+        <span class="tpill">App + Web3 Pro</span>
+      </div>
+      <div class="price-row">
+        <span class="price">₦900,000</span>
+        <span class="was">₦1,050,000</span>
+      </div>
+      <div class="save-pill">Save ₦150,000 (14.3%)</div>
+      <hr class="divider">
+      <div class="feat"><span class="dot dp"></span>38 weeks — complete mastery journey</div>
+      <div class="feat"><span class="dot dp"></span>3 capstone portfolio projects (job/client ready)</div>
+      <div class="feat"><span class="dot dp"></span>Weekly 1-on-1 mentoring throughout</div>
+      <div class="feat"><span class="dot dp"></span>CV review + LinkedIn profile optimisation</div>
+      <div class="feat"><span class="dot dp"></span>Business setup guidance (freelance / agency)</div>
+      <div class="feat"><span class="dot dp"></span>Lifetime alumni network access</div>
+      <div class="feat"><span class="dot dp"></span>Job placement & client referral support</div>
+    </div>
+
+  </div>
+
+  <div class="section-label">Revenue potential per cohort</div>
+  <div class="metrics">
+    <div class="mc"><div class="lbl">10 students — Jumpstart</div><div class="val">₦2,100,000</div></div>
+    <div class="mc"><div class="lbl">10 students — Professional</div><div class="val">₦4,800,000</div></div>
+    <div class="mc"><div class="lbl">5 students — Mastery</div><div class="val">₦4,500,000</div></div>
+    <div class="mc"><div class="lbl">Mixed cohort of 20</div><div class="val">~₦8,000,000+</div></div>
+  </div>
+
+  <div class="section-label">Suggested delivery timeline (Tech Professional bundle)</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-title">Weeks 1–8 — AI Builder</div>
+      <div class="tl-sub">Start with AI/ML to set the foundation. Students learn Python & data thinking early.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot g"></div>
+      <div class="tl-title">Weeks 9–14 — Automation Pro</div>
+      <div class="tl-sub">Apply AI skills immediately in automation workflows — the connection feels natural.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot p"></div>
+      <div class="tl-title">Weeks 15–24 — Full-Stack + Web3</div>
+      <div class="tl-sub">Build production apps that incorporate AI & automation — students finish with a complete portfolio.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot x"></div>
+      <div class="tl-title">Week 25+ — Demo day & job/client launch</div>
+      <div class="tl-sub">Showcase capstone projects. Students pitch to employers or launch freelance services.</div>
+    </div>
+  </div>
+</div>

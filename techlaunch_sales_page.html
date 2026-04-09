@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechLaunch Nigeria — AI, Automation & Web3 Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0A0A0A;
+    --cream: #F5F0E8;
+    --gold: #C9A84C;
+    --gold-light: #E8D49A;
+    --teal: #1A6B5A;
+    --teal-light: #E0F0EC;
+    --rust: #C04A2A;
+    --rust-light: #FAEDE8;
+    --purple: #4A3580;
+    --purple-light: #EDEAF8;
+    --muted: #6B6560;
+    --border: rgba(10,10,10,0.1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
+
+  /* NAV */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 4rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--cream);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; font-size: .875rem; font-weight: 500; }
+  .nav-links a { text-decoration: none; color: var(--ink); opacity: 0.6; transition: opacity .2s; }
+  .nav-links a:hover { opacity: 1; }
+  .nav-cta {
+    background: var(--ink);
+    color: var(--cream);
+    padding: .6rem 1.4rem;
+    border-radius: 2px;
+    font-size: .875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--teal); }
+
+  /* HERO */
+  .hero {
+    padding: 7rem 4rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .75rem;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    background: var(--teal-light);
+    padding: .35rem .85rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+  .hero h1 {
+    font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero-sub {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    padding: .9rem 2rem;
+    border-radius: 2px;
+    font-size: .9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background .2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-primary:hover { background: var(--teal); }
+  .btn-secondary {
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+    padding: .9rem 2rem;
+    border-radius: 2px;
+    font-size: .9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all .2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-secondary:hover { background: var(--ink); color: var(--cream); }
+
+  /* HERO STATS */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .stat-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.5rem;
+  }
+  .stat-card:first-child {
+    grid-column: span 2;
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .stat-card:first-child .stat-num { color: var(--gold); }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: .25rem; }
+  .stat-label { font-size: .8rem; color: var(--muted); font-weight: 400; }
+  .stat-card:first-child .stat-label { color: rgba(245,240,232,0.6); }
+
+  /* SECTION LAYOUT */
+  .section { padding: 5rem 4rem; max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 1rem; line-height: 1.1; }
+  .section-sub { font-size: 1rem; color: var(--muted); line-height: 1.7; max-width: 560px; font-weight: 300; }
+
+  /* DIVIDER */
+  .full-divider { border: none; border-top: 1px solid var(--border); }
+
+  /* TRACKS */
+  .tracks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .track-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    background: white;
+    transition: transform .2s;
+  }
+  .track-card:hover { transform: translateY(-3px); }
+  .track-header { padding: 1.5rem; border-bottom: 1px solid var(--border); }
+  .track-icon {
+    width: 36px; height: 36px; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: .7rem;
+    margin-bottom: 1rem; letter-spacing: .05em;
+  }
+  .icon-ai { background: #E6F1FB; color: #0C447C; }
+  .icon-auto { background: var(--teal-light); color: var(--teal); }
+  .icon-web { background: var(--purple-light); color: var(--purple); }
+  .track-name { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; }
+  .track-desc { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+  .track-body { padding: 1.25rem 1.5rem; }
+  .track-tiers { display: flex; flex-direction: column; gap: .6rem; }
+  .tier-row { display: flex; justify-content: space-between; align-items: center; font-size: .82rem; }
+  .tier-name { color: var(--muted); }
+  .tier-price { font-weight: 600; font-family: 'Syne', sans-serif; font-size: .9rem; }
+  .track-footer { padding: 1rem 1.5rem; background: var(--cream); border-top: 1px solid var(--border); }
+  .track-link { font-size: .82rem; font-weight: 500; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: .4rem; }
+  .track-link::after { content: '→'; transition: transform .2s; }
+  .track-link:hover::after { transform: translateX(4px); }
+
+  /* BUNDLES */
+  .bundles-wrap { background: var(--ink); padding: 5rem 4rem; }
+  .bundles-inner { max-width: 1200px; margin: 0 auto; }
+  .bundles-inner .section-tag { color: var(--gold-light); }
+  .bundles-inner .section-title { color: var(--cream); }
+  .bundles-inner .section-sub { color: rgba(245,240,232,0.6); }
+  .bundles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; }
+  .bundle-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 1.75rem;
+    transition: border-color .2s;
+  }
+  .bundle-card.featured {
+    background: white;
+    border-color: white;
+    color: var(--ink);
+  }
+  .bundle-card:not(.featured):hover { border-color: rgba(255,255,255,0.3); }
+  .bundle-tier { font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 1rem; }
+  .bundle-card:not(.featured) .bundle-tier { color: var(--gold-light); }
+  .bundle-card.featured .bundle-tier { color: var(--teal); }
+  .bundle-name { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: .5rem; }
+  .bundle-card:not(.featured) .bundle-name { color: var(--cream); }
+  .bundle-desc { font-size: .82rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  .bundle-card:not(.featured) .bundle-desc { color: rgba(245,240,232,0.55); }
+  .bundle-card.featured .bundle-desc { color: var(--muted); }
+  .bundle-price { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: .2rem; }
+  .bundle-card:not(.featured) .bundle-price { color: var(--cream); }
+  .bundle-was { font-size: .8rem; margin-bottom: .6rem; }
+  .bundle-card:not(.featured) .bundle-was { color: rgba(245,240,232,0.4); text-decoration: line-through; }
+  .bundle-card.featured .bundle-was { color: var(--muted); text-decoration: line-through; }
+  .bundle-save { display: inline-block; font-size: .72rem; font-weight: 600; padding: .25rem .7rem; border-radius: 20px; margin-bottom: 1.25rem; }
+  .bundle-card:not(.featured) .bundle-save { background: rgba(201,168,76,0.2); color: var(--gold-light); }
+  .bundle-card.featured .bundle-save { background: var(--teal-light); color: var(--teal); }
+  .bundle-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 1.25rem 0; }
+  .bundle-card.featured .bundle-divider { border-color: var(--border); }
+  .bundle-feat { font-size: .8rem; padding: .35rem 0; display: flex; gap: .6rem; }
+  .bundle-card:not(.featured) .bundle-feat { color: rgba(245,240,232,0.7); }
+  .bundle-card.featured .bundle-feat { color: var(--muted); }
+  .check { color: var(--gold); font-size: .7rem; margin-top: 2px; flex-shrink: 0; }
+  .bundle-card.featured .check { color: var(--teal); }
+  .bundle-cta {
+    display: block; text-align: center; margin-top: 1.5rem;
+    padding: .8rem; border-radius: 2px; font-size: .85rem; font-weight: 500;
+    text-decoration: none; transition: all .2s; font-family: 'DM Sans', sans-serif;
+  }
+  .bundle-card:not(.featured) .bundle-cta { border: 1px solid rgba(255,255,255,0.25); color: var(--cream); }
+  .bundle-card:not(.featured) .bundle-cta:hover { background: rgba(255,255,255,0.1); }
+  .bundle-card.featured .bundle-cta { background: var(--ink); color: var(--cream); }
+  .bundle-card.featured .bundle-cta:hover { background: var(--teal); }
+
+  /* HOW IT WORKS */
+  .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+  .steps { display: flex; flex-direction: column; gap: 0; }
+  .step { display: flex; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
+  .step:last-child { border-bottom: none; }
+  .step-num { font-family: 'Syne', sans-serif; font-size: .75rem; font-weight: 700; color: var(--gold); min-width: 28px; padding-top: .15rem; }
+  .step-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: .4rem; }
+  .step-desc { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+  .how-visual { background: var(--ink); border-radius: 4px; padding: 2.5rem; color: var(--cream); }
+  .how-visual-title { font-family: 'Syne', sans-serif; font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+  .delivery-item { display: flex; justify-content: space-between; align-items: center; padding: .85rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); font-size: .85rem; }
+  .delivery-item:last-child { border-bottom: none; }
+  .delivery-label { color: rgba(245,240,232,0.55); }
+  .delivery-val { color: var(--cream); font-weight: 500; }
+
+  /* MENTORING */
+  .mentoring-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 3rem; }
+  .mentor-card { background: white; border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem; }
+  .mentor-tier { font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .75rem; }
+  .mentor-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: .6rem; }
+  .mentor-desc { font-size: .82rem; color: var(--muted); line-height: 1.6; }
+  .mentor-tier.ai { color: #185FA5; }
+  .mentor-tier.auto { color: var(--teal); }
+  .mentor-tier.web { color: var(--purple); }
+
+  /* PAYMENT PLAN */
+  .payment-wrap { background: var(--teal); padding: 5rem 4rem; }
+  .payment-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .payment-inner .section-tag { color: var(--teal-light); }
+  .payment-inner .section-title { color: white; }
+  .payment-inner .section-sub { color: rgba(255,255,255,0.65); }
+  .payment-plans { display: flex; flex-direction: column; gap: 1rem; }
+  .plan { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; padding: 1.25rem 1.5rem; }
+  .plan-name { font-family: 'Syne', sans-serif; font-size: .9rem; font-weight: 700; color: white; margin-bottom: .3rem; }
+  .plan-desc { font-size: .82rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
+
+  /* FAQ */
+  .faq-list { margin-top: 3rem; display: flex; flex-direction: column; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0; cursor: pointer; font-weight: 500; font-size: .95rem; gap: 1rem; }
+  .faq-q::after { content: '+'; font-family: 'Syne', sans-serif; font-size: 1.2rem; flex-shrink: 0; color: var(--gold); }
+  .faq-q.open::after { content: '−'; }
+  .faq-a { font-size: .875rem; color: var(--muted); line-height: 1.7; padding-bottom: 1.25rem; display: none; }
+  .faq-a.open { display: block; }
+
+  /* CTA FINAL */
+  .final-cta { background: var(--cream); padding: 6rem 4rem; text-align: center; border-top: 1px solid var(--border); }
+  .final-cta h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 1rem; line-height: 1.1; }
+  .final-cta h2 em { font-style: italic; color: var(--gold); }
+  .final-cta p { font-size: 1rem; color: var(--muted); margin-bottom: 2.5rem; font-weight: 300; }
+  .final-cta-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer { background: var(--ink); color: rgba(245,240,232,0.5); text-align: center; padding: 2rem 4rem; font-size: .8rem; }
+  footer span { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .hero > * { animation: fadeUp .7s ease both; }
+  .hero > *:nth-child(2) { animation-delay: .12s; }
+
+  @media(max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero, .how-grid, .payment-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .section, .bundles-wrap, .payment-wrap { padding: 3.5rem 1.5rem; }
+    .tracks-grid, .bundles-grid, .mentoring-grid { grid-template-columns: 1fr; }
+    .hero { padding: 4rem 1.5rem 3rem; }
+    .final-cta { padding: 4rem 1.5rem; }
+    footer { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Tech<span>Launch</span> Nigeria</div>
+  <div class="nav-links">
+    <a href="#tracks">Tracks</a>
+    <a href="#bundles">Bundles</a>
+    <a href="#how">How it works</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <a href="#enrol" class="nav-cta">Enrol now</a>
+</nav>
+
+<!-- HERO -->
+<div style="border-bottom:1px solid var(--border);">
+  <div class="hero">
+    <div>
+      <div class="hero-eyebrow">Nigeria's #1 tech skills programme</div>
+      <h1>Build skills that <em>pay</em> in the new economy</h1>
+      <p class="hero-sub">Master AI & Machine Learning, Automation, and App & Web3 Development — with live training, real projects, and 1-on-1 mentoring. In-person quality, delivered online.</p>
+      <div class="hero-buttons">
+        <a href="#bundles" class="btn-primary">See bundle deals</a>
+        <a href="#tracks" class="btn-secondary">Explore tracks</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">3 Tracks</div>
+        <div class="stat-label">AI/ML · Automation · App & Web3 — learn one or master all three</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">₦65k</div>
+        <div class="stat-label">Starting price</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">38 wks</div>
+        <div class="stat-label">Full mastery path</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRACKS -->
+<div id="tracks">
+  <div class="section">
+    <div class="section-tag">What we teach</div>
+    <h2 class="section-title">Three tracks. Infinite opportunity.</h2>
+    <p class="section-sub">Each track is structured into Starter, Pro, and Premium tiers — so you learn at the right depth for where you are right now.</p>
+    <div class="tracks-grid">
+
+      <div class="track-card">
+        <div class="track-header">
+          <div class="track-icon icon-ai">AI</div>
+          <div class="track-name">AI / Machine Learning</div>
+          <div class="track-desc">From Python basics to deploying real ML models and fine-tuning LLMs. Build the skills behind the most in-demand jobs on the planet.</div>
+        </div>
+        <div class="track-body">
+          <div class="track-tiers">
+            <div class="tier-row"><span class="tier-name">Starter — AI Foundations (4 wks)</span><span class="tier-price">₦85,000</span></div>
+            <div class="tier-row"><span class="tier-name">Pro — AI Builder (8 wks)</span><span class="tier-price">₦185,000</span></div>
+            <div class="tier-row"><span class="tier-name">Premium — AI Professional (12 wks)</span><span class="tier-price">₦350,000</span></div>
+          </div>
+        </div>
+        <div class="track-footer">
+          <a href="#bundles" class="track-link">Bundle & save</a>
+        </div>
+      </div>
+
+      <div class="track-card">
+        <div class="track-header">
+          <div class="track-icon icon-auto">AUTO</div>
+          <div class="track-name">Automation</div>
+          <div class="track-desc">No-code tools to Python scripting to full RPA. Automate businesses, land freelance clients, or launch your own automation agency.</div>
+        </div>
+        <div class="track-body">
+          <div class="track-tiers">
+            <div class="tier-row"><span class="tier-name">Starter — Essentials (3 wks)</span><span class="tier-price">₦65,000</span></div>
+            <div class="tier-row"><span class="tier-name">Pro — Automation Pro (6 wks)</span><span class="tier-price">₦150,000</span></div>
+            <div class="tier-row"><span class="tier-name">Premium — Agency (10 wks)</span><span class="tier-price">₦280,000</span></div>
+          </div>
+        </div>
+        <div class="track-footer">
+          <a href="#bundles" class="track-link">Bundle & save</a>
+        </div>
+      </div>
+
+      <div class="track-card">
+        <div class="track-header">
+          <div class="track-icon icon-web">WEB</div>
+          <div class="track-name">App & Web3 Development</div>
+          <div class="track-desc">Full-stack web and mobile apps, smart contracts, DeFi, and NFT platforms. Build products people actually use — and own.</div>
+        </div>
+        <div class="track-body">
+          <div class="track-tiers">
+            <div class="tier-row"><span class="tier-name">Starter — Dev Foundations (5 wks)</span><span class="tier-price">₦90,000</span></div>
+            <div class="tier-row"><span class="tier-name">Pro — Full-Stack + Web3 (10 wks)</span><span class="tier-price">₦220,000</span></div>
+            <div class="tier-row"><span class="tier-name">Premium — App + Web3 Pro (16 wks)</span><span class="tier-price">₦420,000</span></div>
+          </div>
+        </div>
+        <div class="track-footer">
+          <a href="#bundles" class="track-link">Bundle & save</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<hr class="full-divider">
+
+<!-- BUNDLES -->
+<div id="bundles" class="bundles-wrap">
+  <div class="bundles-inner">
+    <div class="section-tag">Bundle deals</div>
+    <h2 class="section-title">Get all three. Pay less. Earn more.</h2>
+    <p class="section-sub">Commit to the full journey and save up to ₦150,000. Students who take all three tracks build portfolios that command premium rates.</p>
+    <div class="bundles-grid">
+
+      <div class="bundle-card">
+        <div class="bundle-tier">Starter bundle</div>
+        <div class="bundle-name">Tech Jumpstart</div>
+        <div class="bundle-desc">All three Starter-tier packages. Perfect for beginners exploring their direction before going deep.</div>
+        <div class="bundle-price">₦210,000</div>
+        <div class="bundle-was">₦240,000</div>
+        <div class="bundle-save">Save ₦30,000</div>
+        <hr class="bundle-divider">
+        <div class="bundle-feat"><span class="check">✓</span> AI Foundations + Automation Essentials + Dev Foundations</div>
+        <div class="bundle-feat"><span class="check">✓</span> 12 weeks of structured learning</div>
+        <div class="bundle-feat"><span class="check">✓</span> 3 beginner projects (one per track)</div>
+        <div class="bundle-feat"><span class="check">✓</span> Group community access</div>
+        <div class="bundle-feat"><span class="check">✓</span> 3 completion certificates</div>
+        <a href="https://wa.me/2348177226646?text=Hi%2C%20I%27m%20interested%20in%20the%20Tech%20Jumpstart%20bundle" target="_blank" class="bundle-cta">Enrol — Jumpstart</a>
+      </div>
+
+      <div class="bundle-card featured">
+        <div class="bundle-tier">Best value</div>
+        <div class="bundle-name">Tech Professional</div>
+        <div class="bundle-desc">All three Pro-tier packages. The most popular choice for career-changers and serious learners.</div>
+        <div class="bundle-price">₦480,000</div>
+        <div class="bundle-was">₦555,000</div>
+        <div class="bundle-save">Save ₦75,000</div>
+        <hr class="bundle-divider">
+        <div class="bundle-feat"><span class="check">✓</span> AI Builder + Automation Pro + Full-Stack + Web3</div>
+        <div class="bundle-feat"><span class="check">✓</span> 24 weeks — full career-ready curriculum</div>
+        <div class="bundle-feat"><span class="check">✓</span> 9 real-world portfolio projects</div>
+        <div class="bundle-feat"><span class="check">✓</span> 6 x 1-on-1 mentoring sessions</div>
+        <div class="bundle-feat"><span class="check">✓</span> Monthly live instructor Q&A</div>
+        <div class="bundle-feat"><span class="check">✓</span> Priority community access</div>
+        <a href="https://wa.me/2348177226646?text=Hi%2C%20I%27m%20interested%20in%20the%20Tech%20Professional%20bundle" target="_blank" class="bundle-cta">Enrol — Professional</a>
+      </div>
+
+      <div class="bundle-card">
+        <div class="bundle-tier">Elite bundle</div>
+        <div class="bundle-name">Tech Mastery</div>
+        <div class="bundle-desc">All three Premium-tier packages. For those going all-in — building a career, product, or agency.</div>
+        <div class="bundle-price">₦900,000</div>
+        <div class="bundle-was">₦1,050,000</div>
+        <div class="bundle-save">Save ₦150,000</div>
+        <hr class="bundle-divider">
+        <div class="bundle-feat"><span class="check">✓</span> AI Professional + Automation Agency + App + Web3 Pro</div>
+        <div class="bundle-feat"><span class="check">✓</span> 38 weeks — complete mastery path</div>
+        <div class="bundle-feat"><span class="check">✓</span> Weekly 1-on-1 mentoring throughout</div>
+        <div class="bundle-feat"><span class="check">✓</span> CV, LinkedIn & portfolio review</div>
+        <div class="bundle-feat"><span class="check">✓</span> Business setup & freelance guidance</div>
+        <div class="bundle-feat"><span class="check">✓</span> Lifetime alumni network + job referrals</div>
+        <a href="https://wa.me/2348177226646?text=Hi%2C%20I%27m%20interested%20in%20the%20Tech%20Mastery%20bundle" target="_blank" class="bundle-cta">Enrol — Mastery</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div id="how">
+  <div class="section">
+    <div class="section-tag">The experience</div>
+    <h2 class="section-title">How it works</h2>
+    <p class="section-sub">Live, structured, and designed around your schedule — not the other way around.</p>
+    <div class="how-grid">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <div class="step-title">Enrol & join your cohort</div>
+            <div class="step-desc">Pick your track or bundle. You'll get a welcome pack, schedule, and access to your class group within 24 hours.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <div class="step-title">Attend live sessions (3x/week)</div>
+            <div class="step-desc">Join instructor-led classes via Zoom or Google Meet. Every session is recorded and shared for review.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <div class="step-title">Build real projects</div>
+            <div class="step-desc">Each track has hands-on projects you'll actually deploy. No toy examples — real portfolio pieces.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div>
+            <div class="step-title">Get mentored & certified</div>
+            <div class="step-desc">1-on-1 sessions with your instructor, project reviews, and a certificate you can share on LinkedIn.</div>
+          </div>
+        </div>
+      </div>
+      <div class="how-visual">
+        <div class="how-visual-title">Delivery details</div>
+        <div class="delivery-item"><span class="delivery-label">Format</span><span class="delivery-val">Live online (Zoom)</span></div>
+        <div class="delivery-item"><span class="delivery-label">Sessions</span><span class="delivery-val">2–3x per week</span></div>
+        <div class="delivery-item"><span class="delivery-label">Session length</span><span class="delivery-val">90–120 minutes</span></div>
+        <div class="delivery-item"><span class="delivery-label">Recordings</span><span class="delivery-val">All sessions recorded</span></div>
+        <div class="delivery-item"><span class="delivery-label">Community</span><span class="delivery-val">WhatsApp / Discord</span></div>
+        <div class="delivery-item"><span class="delivery-label">Assessment</span><span class="delivery-val">Weekly quizzes + projects</span></div>
+        <div class="delivery-item"><span class="delivery-label">Language</span><span class="delivery-val">English</span></div>
+        <div class="delivery-item"><span class="delivery-label">Location</span><span class="delivery-val">Nigeria-wide (remote)</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="full-divider">
+
+<!-- MENTORING -->
+<div class="section">
+  <div class="section-tag">Support structure</div>
+  <h2 class="section-title">Mentoring that actually moves you forward</h2>
+  <p class="section-sub">Every tier includes structured support. Pro and Premium students get direct, scheduled time with the instructor.</p>
+  <div class="mentoring-grid">
+    <div class="mentor-card">
+      <div class="mentor-tier ai">Starter tier</div>
+      <div class="mentor-title">Group support</div>
+      <div class="mentor-desc">Access to a WhatsApp/Telegram class group. Ask questions, share progress, get answers from instructors and peers. Weekly office hours drop-in.</div>
+    </div>
+    <div class="mentor-card">
+      <div class="mentor-tier auto">Pro tier</div>
+      <div class="mentor-title">2 x 1-on-1 sessions</div>
+      <div class="mentor-desc">Two scheduled 45-minute sessions with your instructor per track. Review your projects, get career guidance, and get unstuck fast. Plus everything in Starter.</div>
+    </div>
+    <div class="mentor-card">
+      <div class="mentor-tier web">Premium tier</div>
+      <div class="mentor-title">Weekly 1-on-1 mentoring</div>
+      <div class="mentor-desc">A dedicated weekly check-in throughout the course. CV review, LinkedIn audit, portfolio critique, job placement support, and business setup guidance. Full accountability.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENT PLAN -->
+<div class="payment-wrap">
+  <div class="payment-inner">
+    <div>
+      <div class="section-tag">Flexible payments</div>
+      <h2 class="section-title">No need to pay it all upfront</h2>
+      <p class="section-sub">We offer instalment options so the cost never stands between you and a career-changing skill set.</p>
+    </div>
+    <div class="payment-plans">
+      <div class="plan">
+        <div class="plan-name">Full payment — 5% discount</div>
+        <div class="plan-desc">Pay 100% on enrolment and get an additional 5% off the already discounted bundle price.</div>
+      </div>
+      <div class="plan">
+        <div class="plan-name">50/50 split</div>
+        <div class="plan-desc">Pay 50% on enrolment, the remaining 50% by Week 4 of your first track. No interest, no stress.</div>
+      </div>
+      <div class="plan">
+        <div class="plan-name">3-month plan (Mastery only)</div>
+        <div class="plan-desc">For the Tech Mastery bundle: pay in 3 equal instalments — at enrolment, Month 2, and Month 4.</div>
+      </div>
+      <div class="plan">
+        <div class="plan-name">Corporate / employer-sponsored</div>
+        <div class="plan-desc">Company paying for your training? We issue invoices for team enrolments of 3 or more. Contact us for group rates.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section" id="faq">
+  <div class="section-tag">Questions</div>
+  <h2 class="section-title">Frequently asked questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Do I need prior experience to join?</div>
+      <div class="faq-a">No. Starter-tier packages begin from scratch — we assume nothing. Pro and Premium tiers require basic familiarity with computers and ideally some exposure to programming, but a strong willingness to learn is the only real requirement.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can I take the tracks at the same time?</div>
+      <div class="faq-a">For bundles, we recommend running them sequentially — AI first, then Automation, then App/Web3 — because each builds on the last. However, motivated students can discuss overlapping schedules with their instructor.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What if I miss a live session?</div>
+      <div class="faq-a">All live sessions are recorded and shared within 24 hours. You can watch the replay, then post your questions in the class group or raise them at the next session.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Is the certificate recognised by employers?</div>
+      <div class="faq-a">Our certificates are issued on completion of projects and assessments — not just attendance. Employers care far more about your portfolio projects, which are designed to demonstrate real skills. We coach you on how to present them effectively.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What equipment do I need?</div>
+      <div class="faq-a">A laptop or desktop computer (Windows, Mac, or Linux), a stable internet connection, and a working camera and microphone for live sessions. A smartphone alone is not sufficient for coding tracks.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is the refund policy?</div>
+      <div class="faq-a">We offer a full refund within 7 days of the first class if you decide the programme isn't right for you. After that, refunds are considered on a case-by-case basis. We'd rather work with you to find a solution than lose you as a student.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final-cta" id="enrol">
+  <h2>Your next chapter starts <em>now.</em></h2>
+  <p>Join hundreds of Nigerians already building high-income tech skills. Cohorts fill fast — secure your spot today.</p>
+  <div class="final-cta-buttons">
+    <a href="https://wa.me/2348177226646?text=Hi%2C%20I%27d%20like%20to%20enrol%20in%20a%20TechLaunch%20programme" target="_blank" class="btn-primary">Enrol via WhatsApp</a>
+    <a href="mailto:hello@techlaunch.ng" class="btn-secondary">Send us an email</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2026 <span>TechLaunch Nigeria</span>. All rights reserved. · Abuja, Nigeria · hello@techlaunch.ng
+</footer>
+
+<script>
+function toggleFaq(el) {
+  const ans = el.nextElementSibling;
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.classList.remove('open');
+    q.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) {
+    el.classList.add('open');
+    ans.classList.add('open');
+  }
+}
+</script>
+</body>
+</html>

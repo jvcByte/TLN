@@ -1,0 +1,271 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+.wrap { padding: 1.5rem 0; }
+.hero { margin-bottom: 2rem; }
+.hero h1 { font-size: 22px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+.hero p { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; }
+.tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.tab { padding: 8px 18px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); font-size: 13px; font-weight: 500; cursor: pointer; background: transparent; color: var(--color-text-secondary); transition: all 0.15s; }
+.tab.active { background: var(--color-background-info); color: var(--color-text-info); border-color: var(--color-border-info); }
+.track { display: none; }
+.track.visible { display: block; }
+.track-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.track-title { font-size: 18px; font-weight: 500; color: var(--color-text-primary); }
+.track-sub { font-size: 13px; color: var(--color-text-secondary); margin-top: 4px; }
+.packages { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 1.5rem; }
+.pkg { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; }
+.pkg.featured { border: 2px solid var(--color-border-info); }
+.pkg-badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: var(--border-radius-md); margin-bottom: 10px; background: var(--color-background-info); color: var(--color-text-info); }
+.pkg-badge.pop { background: var(--color-background-success); color: var(--color-text-success); }
+.pkg-badge.prem { background: #EEEDFE; color: #3C3489; }
+.pkg-name { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+.pkg-price { font-size: 22px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 2px; }
+.pkg-dur { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 12px; }
+.divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 10px 0; }
+.feature { font-size: 12px; color: var(--color-text-secondary); padding: 4px 0; display: flex; gap: 6px; line-height: 1.5; }
+.dot { width: 5px; height: 5px; border-radius: 50%; background: #378ADD; margin-top: 6px; flex-shrink: 0; }
+.dot.g { background: #639922; }
+.dot.p { background: #7F77DD; }
+.section-label { font-size: 13px; font-weight: 500; color: var(--color-text-secondary); margin: 1.5rem 0 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+.pill { font-size: 12px; padding: 4px 12px; border-radius: 20px; border: 0.5px solid var(--color-border-tertiary); color: var(--color-text-secondary); background: var(--color-background-secondary); }
+.info-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
+.info-card { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 0.75rem 1rem; }
+.info-card .label { font-size: 11px; color: var(--color-text-tertiary); margin-bottom: 4px; }
+.info-card .val { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; }
+.proj { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 0.75rem; font-size: 12px; color: var(--color-text-secondary); border-left: 3px solid #378ADD; border-radius: 0; }
+.proj.g { border-color: #639922; }
+.proj.p { border-color: #7F77DD; }
+.proj .proj-title { font-weight: 500; color: var(--color-text-primary); font-size: 13px; margin-bottom: 2px; }
+.cta { margin-top: 2rem; display: flex; gap: 10px; flex-wrap: wrap; }
+.cta button { padding: 10px 20px; font-size: 13px; border-radius: var(--border-radius-md); cursor: pointer; border: 0.5px solid var(--color-border-secondary); background: transparent; color: var(--color-text-primary); }
+</style>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>Tech training packages — sell & deliver</h1>
+    <p>Three ready-to-sell tracks. Each has tiered packages, curriculum, delivery method, projects & mentoring structure.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="show('ai')">AI / Machine Learning</button>
+    <button class="tab" onclick="show('auto')">Automation</button>
+    <button class="tab" onclick="show('web3')">App & Web3 Dev</button>
+  </div>
+
+  <div id="ai" class="track visible">
+    <div class="track-header">
+      <div>
+        <div class="track-title">AI / Machine Learning</div>
+        <div class="track-sub">From Python basics to deploying real ML models</div>
+      </div>
+    </div>
+
+    <div class="packages">
+      <div class="pkg">
+        <div class="pkg-badge">Starter</div>
+        <div class="pkg-name">AI Foundations</div>
+        <div class="pkg-price">₦85,000</div>
+        <div class="pkg-dur">4 weeks &nbsp;·&nbsp; 2x per week</div>
+        <hr class="divider">
+        <div class="feature"><span class="dot"></span>Python for data science intro</div>
+        <div class="feature"><span class="dot"></span>ML concepts & algorithms (supervised/unsupervised)</div>
+        <div class="feature"><span class="dot"></span>Tools: Jupyter, Scikit-learn, Pandas</div>
+        <div class="feature"><span class="dot"></span>1 guided project</div>
+        <div class="feature"><span class="dot"></span>Group chat support</div>
+      </div>
+      <div class="pkg featured">
+        <div class="pkg-badge pop">Most popular</div>
+        <div class="pkg-name">AI Builder</div>
+        <div class="pkg-price">₦185,000</div>
+        <div class="pkg-dur">8 weeks &nbsp;·&nbsp; 3x per week</div>
+        <hr class="divider">
+        <div class="feature"><span class="dot"></span>Everything in Starter</div>
+        <div class="feature"><span class="dot"></span>Deep learning with TensorFlow / PyTorch</div>
+        <div class="feature"><span class="dot"></span>NLP, Computer Vision, model evaluation</div>
+        <div class="feature"><span class="dot"></span>3 real-world projects</div>
+        <div class="feature"><span class="dot"></span>2 x 1-on-1 mentoring sessions</div>
+        <div class="feature"><span class="dot"></span>Certificate of completion</div>
+      </div>
+      <div class="pkg">
+        <div class="pkg-badge prem">Premium</div>
+        <div class="pkg-name">AI Professional</div>
+        <div class="pkg-price">₦350,000</div>
+        <div class="pkg-dur">12 weeks &nbsp;·&nbsp; 3x per week</div>
+        <hr class="divider">
+        <div class="feature"><span class="dot"></span>Everything in Builder</div>
+        <div class="feature"><span class="dot"></span>MLOps, model deployment (FastAPI, Docker)</div>
+        <div class="feature"><span class="dot"></span>LLM fine-tuning & AI product building</div>
+        <div class="feature"><span class="dot"></span>Capstone portfolio project</div>
+        <div class="feature"><span class="dot"></span>Weekly 1-on-1 mentoring</div>
+        <div class="feature"><span class="dot"></span>Job-readiness coaching & CV review</div>
+      </div>
+    </div>
+
+    <div class="section-label">Delivery method</div>
+    <div class="info-row">
+      <div class="info-card"><div class="label">Format</div><div class="val">Live online (Zoom/Google Meet)</div></div>
+      <div class="info-card"><div class="label">Materials</div><div class="val">Slides, notebooks, recordings</div></div>
+      <div class="info-card"><div class="label">Platform</div><div class="val">WhatsApp / Telegram group</div></div>
+      <div class="info-card"><div class="label">Assessment</div><div class="val">Weekly quizzes + project review</div></div>
+    </div>
+
+    <div class="section-label">Sample projects</div>
+    <div class="projects">
+      <div class="proj"><div class="proj-title">House price predictor</div>Regression model using Nigerian real estate data</div>
+      <div class="proj"><div class="proj-title">Spam detector</div>NLP classifier for email/SMS spam</div>
+      <div class="proj"><div class="proj-title">Image classifier</div>CNN that identifies crops or objects</div>
+      <div class="proj"><div class="proj-title">AI chatbot</div>LLM-powered support bot with fine-tuning</div>
+    </div>
+  </div>
+
+  <div id="auto" class="track">
+    <div class="track-header">
+      <div>
+        <div class="track-title">Automation</div>
+        <div class="track-sub">No-code to full-code business automation</div>
+      </div>
+    </div>
+
+    <div class="packages">
+      <div class="pkg">
+        <div class="pkg-badge">Starter</div>
+        <div class="pkg-name">Automation Essentials</div>
+        <div class="pkg-price">₦65,000</div>
+        <div class="pkg-dur">3 weeks &nbsp;·&nbsp; 2x per week</div>
+        <hr class="divider">
+        <div class="feature"><span class="dot g"></span>Zapier & Make (Integromat) fundamentals</div>
+        <div class="feature"><span class="dot g"></span>Workflow design thinking</div>
+        <div class="feature"><span class="dot g"></span>Google Sheets, Forms automation</div>
+        <div class="feature"><span class="dot g"></span>1 live automation build</div>
+        <div class="feature"><span class="dot g"></span>Group Q&A support</div>
+      </div>
+      <div class="pkg featured">
+        <div class="pkg-badge pop">Most popular</div>
+        <div class="pkg-name">Automation Pro</div>
+        <div class="pkg-price">₦150,000</div>
+        <div class="pkg-dur">6 weeks &nbsp;·&nbsp; 3x per week</div>
+        <hr class="divider">
+        <div class="feature"><span class="dot g"></span>Everything in Essentials</div>
+        <div class="feature"><span class="dot g"></span>Python scripting for automation</div>
+        <div class="feature"><span class="dot g"></span>API integrations & webhooks</div>
+        <div class="feature"><span class="dot g"></span>AI automation (ChatGPT API, n8n)</div>
+        <div class="feature"><span class="dot g"></span>3 business automation projects</div>
+        <div class="feature"><span class="dot g"></span>2 x 1-on-1 mentoring sessions</div>
+      </div>
+      <div class="pkg">
+        <div class="pkg-badge prem">Premium</div>
+        <div class="pkg-name">Automation Agency</div>
+        <div class="pkg-price">₦280,000</div>
+        <div class="pkg-dur">10 weeks &nbsp;·&nbsp; 3x per week</div>
+        <hr class="divider">
+        <div class="feature"><span class="dot g"></span>Everything in Pro</div>
+        <div class="feature"><span class="dot g"></span>RPA with UiPath or Power Automate</div>
+        <div class="feature"><span class="dot g"></span>Building & selling automation services</div>
+        <div class="feature"><span class="dot g"></span>Client onboarding & pricing strategy</div>
+        <div class="feature"><span class="dot g"></span>Capstone: full client automation system</div>
+        <div class="feature"><span class="dot g"></span>Weekly 1-on-1 mentoring</div>
+      </div>
+    </div>
+
+    <div class="section-label">Delivery method</div>
+    <div class="info-row">
+      <div class="info-card"><div class="label">Format</div><div class="val">Live online + recorded replays</div></div>
+      <div class="info-card"><div class="label">Materials</div><div class="val">Templates, SOP docs, video walkthroughs</div></div>
+      <div class="info-card"><div class="label">Platform</div><div class="val">WhatsApp / Slack community</div></div>
+      <div class="info-card"><div class="label">Assessment</div><div class="val">Build & submit live automations</div></div>
+    </div>
+
+    <div class="section-label">Sample projects</div>
+    <div class="projects">
+      <div class="proj g"><div class="proj-title">Lead capture pipeline</div>Auto-route form leads to CRM + send welcome email</div>
+      <div class="proj g"><div class="proj-title">Invoice automation</div>Auto-generate & send invoices from spreadsheet data</div>
+      <div class="proj g"><div class="proj-title">Social media scheduler</div>AI-assisted content creation + auto-post system</div>
+      <div class="proj g"><div class="proj-title">HR onboarding bot</div>Automated employee onboarding with document flow</div>
+    </div>
+  </div>
+
+  <div id="web3" class="track">
+    <div class="track-header">
+      <div>
+        <div class="track-title">App & Web3 Development</div>
+        <div class="track-sub">Mobile apps, web platforms & blockchain fundamentals</div>
+      </div>
+    </div>
+
+    <div class="packages">
+      <div class="pkg">
+        <div class="pkg-badge">Starter</div>
+        <div class="pkg-name">Dev Foundations</div>
+        <div class="pkg-price">₦90,000</div>
+        <div class="pkg-dur">5 weeks &nbsp;·&nbsp; 3x per week</div>
+        <hr class="divider">
+        <div class="feature"><span class="dot p"></span>HTML, CSS, JavaScript basics</div>
+        <div class="feature"><span class="dot p"></span>React or Flutter intro</div>
+        <div class="feature"><span class="dot p"></span>Build & deploy a simple web app</div>
+        <div class="feature"><span class="dot p"></span>Git & GitHub fundamentals</div>
+        <div class="feature"><span class="dot p"></span>Group support & code reviews</div>
+      </div>
+      <div class="pkg featured">
+        <div class="pkg-badge pop">Most popular</div>
+        <div class="pkg-name">Full-Stack + Web3</div>
+        <div class="pkg-price">₦220,000</div>
+        <div class="pkg-dur">10 weeks &nbsp;·&nbsp; 3x per week</div>
+        <hr class="divider">
+        <div class="feature"><span class="dot p"></span>Everything in Foundations</div>
+        <div class="feature"><span class="dot p"></span>Backend: Node.js + Express or Django</div>
+        <div class="feature"><span class="dot p"></span>Databases: MongoDB / PostgreSQL</div>
+        <div class="feature"><span class="dot p"></span>Blockchain intro, Solidity basics, smart contracts</div>
+        <div class="feature"><span class="dot p"></span>3 full-stack projects</div>
+        <div class="feature"><span class="dot p"></span>2 x 1-on-1 mentoring sessions</div>
+      </div>
+      <div class="pkg">
+        <div class="pkg-badge prem">Premium</div>
+        <div class="pkg-name">App + Web3 Pro</div>
+        <div class="pkg-price">₦420,000</div>
+        <div class="pkg-dur">16 weeks &nbsp;·&nbsp; 3x per week</div>
+        <hr class="divider">
+        <div class="feature"><span class="dot p"></span>Everything in Full-Stack + Web3</div>
+        <div class="feature"><span class="dot p"></span>DeFi protocols, NFT minting, dApp building</div>
+        <div class="feature"><span class="dot p"></span>Mobile app (React Native or Flutter)</div>
+        <div class="feature"><span class="dot p"></span>App store & Play store deployment</div>
+        <div class="feature"><span class="dot p"></span>Capstone dApp or SaaS product</div>
+        <div class="feature"><span class="dot p"></span>Weekly 1-on-1 mentoring + portfolio review</div>
+      </div>
+    </div>
+
+    <div class="section-label">Delivery method</div>
+    <div class="info-row">
+      <div class="info-card"><div class="label">Format</div><div class="val">Live coding sessions (Zoom)</div></div>
+      <div class="info-card"><div class="label">Materials</div><div class="val">GitHub repos, video tutorials, docs</div></div>
+      <div class="info-card"><div class="label">Platform</div><div class="val">Discord community + LMS</div></div>
+      <div class="info-card"><div class="label">Assessment</div><div class="val">Code review + deployed app submission</div></div>
+    </div>
+
+    <div class="section-label">Sample projects</div>
+    <div class="projects">
+      <div class="proj p"><div class="proj-title">E-commerce web app</div>Full-stack store with cart, auth & payments</div>
+      <div class="proj p"><div class="proj-title">NFT marketplace</div>Mint, list & trade NFTs on a testnet</div>
+      <div class="proj p"><div class="proj-title">DeFi lending dApp</div>Smart contract + React frontend on Ethereum</div>
+      <div class="proj p"><div class="proj-title">Mobile fintech app</div>Wallet + transaction history in React Native</div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <a href="https://wa.me/2348177226646?text=Hi%2C%20I%27m%20interested%20in%20the%20AI%20%2F%20ML%20track" target="_blank"><button>Enrol — AI / ML ↗</button></a>
+    <a href="https://wa.me/2348177226646?text=Hi%2C%20I%27m%20interested%20in%20the%20Automation%20track" target="_blank"><button>Enrol — Automation ↗</button></a>
+    <a href="https://wa.me/2348177226646?text=Hi%2C%20I%27m%20interested%20in%20the%20App%20%26%20Web3%20Dev%20track" target="_blank"><button>Enrol — App & Web3 ↗</button></a>
+  </div>
+</div>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.track').forEach(t => t.classList.remove('visible'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('visible');
+  event.target.classList.add('active');
+}
+</script>

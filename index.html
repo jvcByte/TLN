@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechLaunch Nigeria — AI, Automation & Web3 Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0A0A0A;
+    --cream: #F5F0E8;
+    --gold: #C9A84C;
+    --gold-light: #E8D49A;
+    --teal: #1A6B5A;
+    --teal-light: #E0F0EC;
+    --rust: #C04A2A;
+    --muted: #6B6560;
+    --border: rgba(10,10,10,0.1);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+  h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
+
+  /* NAV */
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 4rem; border-bottom: 1px solid var(--border);
+    background: var(--cream); position: sticky; top: 0; z-index: 100;
+  }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; text-decoration: none; color: var(--ink); }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; font-size: .875rem; font-weight: 500; }
+  .nav-links a { text-decoration: none; color: var(--ink); opacity: 0.6; transition: opacity .2s; }
+  .nav-links a:hover, .nav-links a.active { opacity: 1; }
+  .nav-cta {
+    background: var(--ink); color: var(--cream); padding: .6rem 1.4rem;
+    border-radius: 2px; font-size: .875rem; font-weight: 500;
+    text-decoration: none; transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--teal); }
+
+  /* PAGE TABS */
+  .page-tabs {
+    display: flex; gap: 0; border-bottom: 1px solid var(--border);
+    background: white; padding: 0 4rem; overflow-x: auto;
+  }
+  .page-tab {
+    padding: .85rem 1.5rem; font-size: .85rem; font-weight: 500;
+    cursor: pointer; border: none; background: transparent; color: var(--muted);
+    border-bottom: 2px solid transparent; transition: all .2s; white-space: nowrap;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .page-tab:hover { color: var(--ink); }
+  .page-tab.active { color: var(--ink); border-bottom-color: var(--gold); }
+
+  /* PAGES */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* PACKAGES PAGE WRAPPER */
+  .pkg-page-wrap {
+    max-width: 1200px; margin: 0 auto; padding: 3rem 4rem;
+  }
+
+  /* CSS VARIABLE BRIDGE for embedded components */
+  .component-host {
+    --color-text-primary: var(--ink);
+    --color-text-secondary: var(--muted);
+    --color-text-tertiary: #9B9590;
+    --color-text-info: #185FA5;
+    --color-text-success: #1D6B3A;
+    --color-background-primary: #ffffff;
+    --color-background-secondary: #F5F0E8;
+    --color-background-info: #E6F1FB;
+    --color-background-success: #E4F5EC;
+    --color-border-tertiary: rgba(10,10,10,0.1);
+    --color-border-secondary: rgba(10,10,10,0.15);
+    --color-border-info: #378ADD;
+    --border-radius-lg: 6px;
+    --border-radius-md: 4px;
+    --font-sans: 'DM Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  @media(max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .page-tabs { padding: 0 1rem; }
+    .pkg-page-wrap { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo" onclick="showPage('home'); return false;">Tech<span>Launch</span> Nigeria</a>
+  <div class="nav-links">
+    <a href="#" onclick="showPage('home'); return false;" id="nav-home">Home</a>
+    <a href="#" onclick="showPage('packages'); return false;" id="nav-packages">Packages</a>
+    <a href="#" onclick="showPage('bundles'); return false;" id="nav-bundles">Bundle Deals</a>
+  </div>
+  <a href="https://wa.me/2348177226646?text=Hi%2C%20I%27d%20like%20to%20enrol%20in%20a%20TechLaunch%20programme" target="_blank" class="nav-cta">Enrol now</a>
+</nav>
+
+<div class="page-tabs">
+  <button class="page-tab active" id="tab-home" onclick="showPage('home')">Sales Page</button>
+  <button class="page-tab" id="tab-packages" onclick="showPage('packages')">Training Packages</button>
+  <button class="page-tab" id="tab-bundles" onclick="showPage('bundles')">Bundle Deals</button>
+</div>
+
+<!-- HOME PAGE (Sales Page) -->
+<div id="page-home" class="page active">
+  <div id="sales-content"></div>
+</div>
+
+<!-- PACKAGES PAGE -->
+<div id="page-packages" class="page">
+  <div class="pkg-page-wrap component-host">
+    <div id="packages-content"></div>
+  </div>
+</div>
+
+<!-- BUNDLES PAGE -->
+<div id="page-bundles" class="page">
+  <div class="pkg-page-wrap component-host">
+    <div id="bundles-content"></div>
+  </div>
+</div>
+
+<script>
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  const navEl = document.getElementById('nav-' + name);
+  if (navEl) navEl.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// Tab switcher for the packages component (replaces event.target-dependent show())
+function showTrack(id, clickedBtn) {
+  document.querySelectorAll('#packages-content .track').forEach(t => t.classList.remove('visible'));
+  document.querySelectorAll('#packages-content .tab').forEach(t => t.classList.remove('active'));
+  const el = document.getElementById(id);
+  if (el) el.classList.add('visible');
+  if (clickedBtn) clickedBtn.classList.add('active');
+}
+
+async function loadPage(url, containerId) {
+  try {
+    const res = await fetch(url);
+    const html = await res.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    // Inject styles into head
+    doc.querySelectorAll('style').forEach(s => {
+      const style = document.createElement('style');
+      style.textContent = s.textContent;
+      document.head.appendChild(style);
+    });
+
+    const container = document.getElementById(containerId);
+
+    if (containerId === 'sales-content') {
+      // Strip nav and footer from the sales page — we have our own
+      doc.querySelectorAll('nav, footer').forEach(el => el.remove());
+      container.innerHTML = doc.body.innerHTML;
+      // Re-run scripts (toggleFaq etc.)
+      doc.querySelectorAll('script').forEach(s => {
+        try { new Function(s.textContent)(); } catch(e) {}
+      });
+    } else {
+      container.innerHTML = doc.body.innerHTML;
+      // Fix the packages tab buttons to use showTrack instead of show() + event.target
+      if (containerId === 'packages-content') {
+        container.querySelectorAll('.tab').forEach(btn => {
+          const match = btn.getAttribute('onclick')?.match(/show\('(\w+)'\)/);
+          if (match) {
+            btn.setAttribute('onclick', `showTrack('${match[1]}', this)`);
+          }
+        });
+      }
+      // Run any other scripts (not the broken show() one)
+      doc.querySelectorAll('script').forEach(s => {
+        if (!s.textContent.includes('function show(')) {
+          try { new Function(s.textContent)(); } catch(e) {}
+        }
+      });
+    }
+  } catch(e) {
+    console.error('Failed to load', url, e);
+  }
+}
+
+loadPage('techlaunch_sales_page.html', 'sales-content');
+loadPage('tech_training_packages_naira.html', 'packages-content');
+loadPage('bundle_deals_all_tracks.html', 'bundles-content');
+</script>
+</body>
+</html>
