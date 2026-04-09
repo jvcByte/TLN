@@ -129,6 +129,19 @@
 </div>
 
 <script>
+function toggleFaq(el) {
+  const ans = el.nextElementSibling;
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.classList.remove('open');
+    q.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) {
+    el.classList.add('open');
+    ans.classList.add('open');
+  }
+}
+
 function showPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
@@ -169,9 +182,11 @@ async function loadPage(url, containerId) {
       // Strip nav and footer from the sales page — we have our own
       doc.querySelectorAll('nav, footer').forEach(el => el.remove());
       container.innerHTML = doc.body.innerHTML;
-      // Re-run scripts (toggleFaq etc.)
+      // Re-run scripts (but skip functions already defined globally)
       doc.querySelectorAll('script').forEach(s => {
-        try { new Function(s.textContent)(); } catch(e) {}
+        if (!s.textContent.includes('function toggleFaq')) {
+          try { new Function(s.textContent)(); } catch(e) {}
+        }
       });
     } else {
       container.innerHTML = doc.body.innerHTML;
